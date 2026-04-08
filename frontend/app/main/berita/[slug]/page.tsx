@@ -45,7 +45,7 @@ export default function Home({ params }: { params: Promise<{ slug: string }> }) 
                     <Image src={news.thumbnail} alt={news.title} fill className="object-cover" />
                   </div>
                 )}
-                <div className="prose max-w-none text-gray-600 leading-relaxed text-lg whitespace-pre-wrap">{news?.content}</div>
+                <div className="prose max-w-none text-gray-600 leading-relaxed text-lg whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: news?.content || '' }} />
               </article>
             )}
           </div>

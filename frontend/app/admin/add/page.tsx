@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import TextEditor from '@/components/text-editor'
+import axios from 'axios'
 
 export default function CreatePostForm() {
   const [title, setTitle] = useState('')
@@ -27,6 +28,8 @@ export default function CreatePostForm() {
     //   method: 'POST',
     //   body: formData,
     // })
+
+    axios.post('http://localhost:3001/api/news', formData)
   }
 
   return (
