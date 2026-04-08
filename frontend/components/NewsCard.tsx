@@ -13,7 +13,7 @@ export default function NewsCard({ news }: NewsCardProps) {
   const [hover, setHover] = useState(false);
 
   return (
-    <Link href={`/berita/${news.id}`} className="relative block w-full h-105 overflow-hidden shadow-lg cursor-pointer" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <Link href={`/main/berita/${news.id}`} className="relative block w-full h-105 overflow-hidden shadow-lg cursor-pointer" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       {!hover ? (
         <Image src={news.thumbnail} alt={news.title} fill className="object-cover" />
       ) : (

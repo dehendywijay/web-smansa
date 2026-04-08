@@ -35,7 +35,7 @@ export default function Navbar() {
       {/* Main Navbar */}
       <div className="flex justify-between items-center px-4 md:px-8 py-4 max-w-7xl mx-auto">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group shrink-0">
+        <Link href="/main" className="flex items-center gap-3 group shrink-0">
           <div className="w-10 h-10 bg-red-600 rounded flex items-center justify-center font-bold text-lg text-white group-hover:bg-red-500 transition-colors">S</div>
           <div className="flex flex-col">
             <span className="font-bold text-lg leading-tight tracking-wide">SMA Negri 1</span>
