@@ -33,9 +33,9 @@ export default function Sidebar() {
 
         <div className="space-y-6">
           {news.map((post) => (
-            <Link key={post.id} href={`/berita/${post.id}`} className="flex gap-4 group">
+            <Link key={post.id} href={`/main/berita/${post.id}`} className="flex gap-4 group">
               <div className="relative w-20 h-20 shrink-0">
-                <Image src={post.thumbnail} alt={post.title} fill className="object-cover" />
+                <Image src={`http://localhost:3001/uploads/${post.thumbnail}`} alt={post.title} fill className="object-cover" />
               </div>
 
               <div>
