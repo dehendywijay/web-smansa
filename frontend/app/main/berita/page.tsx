@@ -2,6 +2,7 @@
 
 import Footer from "@/components/footer";
 import Sidebar from "@/components/SideNews";
+import RevealOnScroll from "@/components/animations/RevealOnScroll";
 import PageBreadcrumb from "@/components/ui/PageBreadcrumb";
 import PageHero from "@/components/ui/PageHero";
 import { api_images } from "@/constans/strings";
@@ -22,7 +23,7 @@ export default function NewsList() {
       <section className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-7xl mx-auto px-6 py-10">
         <div className="md:col-span-3">
           {/* Controls Bar */}
-          <div className="flex items-center justify-between bg-gray-50 p-3 mb-8 border border-gray-100">
+          <RevealOnScroll direction="up" className="flex items-center justify-between bg-gray-50 p-3 mb-8 border border-gray-100">
             <div className="flex items-center gap-2 text-red-600">
               <button className="p-1 hover:bg-gray-200 rounded">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -46,17 +47,21 @@ export default function NewsList() {
                 Showing 1-{Math.min(newsList.length, 10)} of {newsList.length} results
               </span>
             </div>
-          </div>
+          </RevealOnScroll>
 
           {/* News List */}
           {loading ? (
-            <p>Loading news...</p>
+            <RevealOnScroll as="p" direction="up" className="text-gray-600">
+              Loading news...
+            </RevealOnScroll>
           ) : error ? (
-            <p className="text-red-600">{error}</p>
+            <RevealOnScroll as="p" direction="up" className="text-red-600">
+              {error}
+            </RevealOnScroll>
           ) : (
             <div className="space-y-12">
-              {newsList.map((post) => (
-                <article key={post.id} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {newsList.map((post, index) => (
+                <RevealOnScroll as="article" key={post.id} direction="up" className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ transitionDelay: `${Math.min(index * 90, 450)}ms` }}>
                   <div className="relative h-48 md:h-auto w-full group overflow-hidden">
                     {post.thumbnail ? (
                       <Link href={`/berita/${post.id}`}>
@@ -83,16 +88,16 @@ export default function NewsList() {
                     <div className="text-sm text-gray-800 mb-4 font-bold">{formatDate(post.createdAt)}</div>
                     <p className="text-gray-600 line-clamp-3 leading-relaxed text-sm md:text-base" dangerouslySetInnerHTML={{ __html: post.content || "No excerpt available..." }} />
                   </div>
-                </article>
+                </RevealOnScroll>
               ))}
             </div>
           )}
         </div>
 
         {/* Sidebar */}
-        <div className="md:col-span-1">
+        <RevealOnScroll as="div" direction="up" delayClassName="delay-150" className="md:col-span-1">
           <Sidebar />
-        </div>
+        </RevealOnScroll>
       </section>
 
       <Footer />
