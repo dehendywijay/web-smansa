@@ -4,6 +4,7 @@ import Footer from "@/components/footer";
 import Sidebar from "@/components/SideNews";
 import PageBreadcrumb from "@/components/ui/PageBreadcrumb";
 import PageHero from "@/components/ui/PageHero";
+import { api_images } from "@/constans/strings";
 import { useNews } from "@/hook/useNews";
 import { formatDate } from "@/lib/date";
 import Image from "next/image";
@@ -59,7 +60,7 @@ export default function NewsList() {
                   <div className="relative h-48 md:h-auto w-full group overflow-hidden">
                     {post.thumbnail ? (
                       <Link href={`/berita/${post.id}`}>
-                        <Image src={`http://localhost:3001/uploads/${post.thumbnail}`} alt={post.title} fill className="object-cover group-hover:scale-105 transition duration-500" />
+                        <Image src={`${api_images}/${post.thumbnail}`} alt={post.title} fill className="object-cover group-hover:scale-105 transition duration-500" />
                       </Link>
                     ) : (
                       <div className="w-full h-full bg-gray-200 flex items-center justify-center">No Image</div>

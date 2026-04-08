@@ -4,6 +4,7 @@ import Sidebar from "@/components/SideNews";
 import Footer from "@/components/footer";
 import PageBreadcrumb from "@/components/ui/PageBreadcrumb";
 import PageHero from "@/components/ui/PageHero";
+import { api_images } from "@/constans/strings";
 import { useNewsDetail } from "@/hook/useNewsDetail";
 import { formatDate } from "@/lib/date";
 import Image from "next/image";
@@ -42,7 +43,7 @@ export default function Home({ params }: { params: Promise<{ slug: string }> }) 
                 </div>
                 {news?.thumbnail && (
                   <div className="relative w-full h-96 mb-8 rounded-lg overflow-hidden">
-                    <Image src={`http://localhost:3001/uploads/${news.thumbnail}`} alt={news.title} fill className="object-cover" />
+                    <Image src={`${api_images}/${news.thumbnail}`} alt={news.title} fill className="object-cover" />
                   </div>
                 )}
                 <div className="prose max-w-none text-gray-600 leading-relaxed text-lg whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: news?.content || '' }} />

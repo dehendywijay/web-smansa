@@ -1,5 +1,6 @@
 "use client";
 
+import { api_images } from "@/constans/strings";
 import { useNews } from "@/hook/useNews";
 import { formatDate } from "@/lib/date";
 import Image from "next/image";
@@ -35,7 +36,7 @@ export default function Sidebar() {
           {news.map((post) => (
             <Link key={post.id} href={`/main/berita/${post.id}`} className="flex gap-4 group">
               <div className="relative w-20 h-20 shrink-0">
-                <Image src={`http://localhost:3001/uploads/${post.thumbnail}`} alt={post.title} fill className="object-cover" />
+                <Image src={`${api_images}/${post.thumbnail}`} alt={post.title} fill className="object-cover" />
               </div>
 
               <div>
