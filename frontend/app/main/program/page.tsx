@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import Sidebar from "@/components/SideNews";
+import RevealOnScroll from "@/components/animations/RevealOnScroll";
 import PageBreadcrumb from "@/components/ui/PageBreadcrumb";
 import PageHero from "@/components/ui/PageHero";
 import { programs } from "@/lib/data";
@@ -11,22 +12,26 @@ export default function ProgramPage() {
       <PageBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Program" }]} />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-7xl mx-auto px-6 py-10">
-        <section className="md:col-span-3 text-gray-700">
-          <h2 className="text-red-700 font-bold text-2xl mb-3">Program Unggulan Sekolah</h2>
-          <hr className="border-gray-300 mb-6" />
+        <RevealOnScroll as="section" direction="up" rootMargin="0px 0px -10% 0px" className="md:col-span-3 text-gray-700">
+          <RevealOnScroll as="h2" direction="up" className="text-red-700 font-bold text-2xl mb-3">
+            Program Unggulan Sekolah
+          </RevealOnScroll>
+          <RevealOnScroll direction="up" delayClassName="delay-100" className="mb-6">
+            <hr className="border-gray-300" />
+          </RevealOnScroll>
           <div className="grid sm:grid-cols-2 gap-5">
-            {programs.map((program) => (
-              <article key={program.title} className="border border-gray-200 rounded-lg p-5">
+            {programs.map((program, index) => (
+              <RevealOnScroll as="article" key={program.title} direction="up" className="border border-gray-200 rounded-lg p-5" style={{ transitionDelay: `${Math.min(index * 90, 360)}ms` }}>
                 <h3 className="font-bold text-lg mb-2">{program.title}</h3>
                 <p className="text-sm text-gray-600">{program.description}</p>
-              </article>
+              </RevealOnScroll>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
 
-        <div>
+        <RevealOnScroll as="div" direction="up" delayClassName="delay-150" rootMargin="0px 0px -10% 0px">
           <Sidebar />
-        </div>
+        </RevealOnScroll>
       </div>
 
       <Footer />

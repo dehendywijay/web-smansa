@@ -5,41 +5,41 @@ export const menuData: MenuItem[] = [
     title: "Beranda",
     href: "/",
     subItems: [
-      { title: "Sambutan Kepala Sekolah", href: "/sambutan" },
-      { title: "Visi & Misi", href: "/visi-misi" },
-      { title: "Berita Terbaru", href: "/berita" },
-      { title: "Alumni", href: "/alumni" },
-      { title: "Contact Us", href: "/hubungi-kami" },
+      { title: "Sambutan Kepala Sekolah", href: "/main/sambutan" },
+      { title: "Visi & Misi", href: "/main/visi-misi" },
+      { title: "Berita Terbaru", href: "/main/berita" },
+      { title: "Alumni", href: "/main/alumni" },
+      { title: "Contact Us", href: "/main/hubungi-kami" },
     ],
   },
   {
     title: "Tentang Kami",
-    href: "/sambutan",
+    href: "/main/tentang-kami",
     subItems: [
-      { title: "Sambutan Kepala Sekolah", href: "/sambutan" },
-      { title: "Visi & Misi", href: "/visi-misi" },
+      { title: "Sambutan Kepala Sekolah", href: "/main/sambutan" },
+      { title: "Visi & Misi", href: "/main/visi-misi" },
     ],
   },
   {
     title: "Alumni",
-    href: "/alumni",
+    href: "/main/alumni",
     subItems: [
-      { title: "Jejaring Alumni", href: "/alumni" },
-      { title: "Program Karier", href: "/alumni" },
+      { title: "Jejaring Alumni", href: "/main/alumni" },
+      { title: "Program Karier", href: "/main/alumni" },
     ],
   },
   {
     title: "Hubungi Kami",
-    href: "/hubungi-kami",
+    href: "/main/hubungi-kami",
     subItems: [
-      { title: "Kontak Sekolah", href: "/hubungi-kami" },
-      { title: "FAQs", href: "/hubungi-kami" },
-      { title: "Kirim Pertanyaan", href: "/hubungi-kami" },
+      { title: "Kontak Sekolah", href: "/main/hubungi-kami" },
+      { title: "FAQs", href: "/main/hubungi-kami" },
+      { title: "Kirim Pertanyaan", href: "/main/hubungi-kami" },
     ],
   },
   {
     title: "Program",
-    href: "/program",
+    href: "/main/program",
   },
 ];
 

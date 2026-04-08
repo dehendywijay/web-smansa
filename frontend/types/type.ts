@@ -10,11 +10,14 @@ export type MenuSubItem = {
 };
 
 export type News = {
-  id: number;
+  id: string;
   title: string;
+  author: string;
   thumbnail: string;
   imgUrl: string;
   content: string;
+  category: string;
+  status: "published" | "draft";
   createdAt: string | Date;
   updatedAt: string | Date;
 };

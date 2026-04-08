@@ -4,10 +4,11 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import CountUp from "react-countup";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { BookOpen, GraduationCap, School, Users } from "lucide-react";
-import Footer from "@/components/footer";
 import NewsSection from "@/components/NewSection";
+import RevealOnScroll from "@/components/animations/RevealOnScroll";
+import HeroSlideCaption from "@/components/animations/HeroSlideCaption";
 import { heroSlides, schoolStatsConfig } from "@/lib/homeData";
 import type { SchoolStat, StatIconKey } from "@/types/home";
 
@@ -27,56 +28,43 @@ const schoolStats: SchoolStat[] = schoolStatsConfig.map((stat) => ({
 }));
 
 export default function Home() {
-  const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000 })]);
-  const [isGreetingVisible, setIsGreetingVisible] = useState(false);
-  const greetingRef = useRef<HTMLDivElement | null>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000 })]);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   useEffect(() => {
-    const element = greetingRef.current;
-
-    if (!element) {
+    if (!emblaApi) {
       return;
     }
 
-    // Trigger greeting animation once when section is visible in the viewport.
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setIsGreetingVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.25 },
-    );
+    // Sinkronkan slide aktif agar animasi judul/subjudul berjalan setiap perpindahan slide.
+    const onSelect = () => setActiveSlideIndex(emblaApi.selectedScrollSnap());
 
-    observer.observe(element);
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
 
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi]);
 
   return (
     <main className="">
       <div className="embla__viewport overflow-hidden relative w-full h-screen" ref={emblaRef}>
         <div className="embla__container flex h-full">
-          {heroSlides.map((slide) => (
+          {heroSlides.map((slide, index) => (
             <div key={slide.title} className="embla__slide flex-[0_0_100%] min-w-0 relative h-full">
               <Image src={slide.imageUrl} alt={slide.alt} fill className="object-cover" />
               <div className="absolute inset-0 bg-black/40"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white w-full px-4">
-                <h1 className="text-3xl md:text-5xl font-extrabold mb-4 drop-shadow-md">{slide.title}</h1>
-                <p className="text-lg md:text-xl font-light drop-shadow">{slide.subtitle}</p>
-              </div>
+              <HeroSlideCaption title={slide.title} subtitle={slide.subtitle} isActive={index === activeSlideIndex} />
             </div>
           ))}
         </div>
       </div>
-      <div ref={greetingRef} className="flex flex-col md:flex-row items-center md:items-start gap-10 max-w-6xl mx-auto p-6 mt-16 md:mt-40">
+      <section className="flex flex-col md:flex-row items-center md:items-start gap-10 max-w-6xl mx-auto p-6 mt-16 md:mt-40">
         {/* Foto dengan border dan dekorasi lingkaran */}
-        <div
-          className={`relative w-48 h-48 md:w-64 md:h-64 shrink-0 mx-auto md:mx-0 transition-all duration-700 ease-out will-change-transform ${
-            isGreetingVisible ? "opacity-100 translate-y-0 md:translate-x-0" : "opacity-0 translate-y-8 md:-translate-x-8 md:translate-y-0"
-          }`}
-        >
+        <RevealOnScroll direction="left" rootMargin="0px 0px -10% 0px" className="relative w-48 h-48 md:w-64 md:h-64 shrink-0 mx-auto md:mx-0">
           {/* Border lingkaran besar */}
           <div className="absolute inset-0 rounded-full border-8 border-red-800"></div>
 
@@ -91,14 +79,10 @@ export default function Home() {
 
           {/* Dekorasi lingkaran kecil kiri bawah */}
           <div className="absolute -bottom-2 -left-2 md:-bottom-4 md:-left-4 w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-red-800 bg-red-700 z-20"></div>
-        </div>
+        </RevealOnScroll>
 
         {/* Teks sambutan */}
-        <div
-          className={`flex-1 text-gray-700 text-center md:text-left transition-all duration-700 ease-out delay-150 will-change-transform ${
-            isGreetingVisible ? "opacity-100 translate-y-0 md:translate-x-0" : "opacity-0 translate-y-8 md:translate-x-8 md:translate-y-0"
-          }`}
-        >
+        <RevealOnScroll direction="right" rootMargin="0px 0px -10% 0px" delayClassName="delay-150" className="flex-1 text-gray-700 text-center md:text-left">
           <h2 className="text-red-700 font-bold text-xl md:text-2xl mb-2">SAMBUTAN KEPALA SEKOLAH</h2>
           <hr className="border-gray-300 mb-4 mx-auto md:mx-0 w-24 md:w-full" />
           <p className="mb-4 text-sm md:text-base leading-relaxed">
@@ -117,8 +101,8 @@ export default function Home() {
             <br />
             Kepala Sekolah SMA N 1 BANGUNREJO
           </p>
-        </div>
-      </div>
+        </RevealOnScroll>
+      </section>
 
       <div className=" relative w-full bg-slate-900 mt-16 md:mt-24 py-12 md:py-20 bg-[url('https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center bg-fixed">
         {/* Background image dengan overlay */}
@@ -139,7 +123,6 @@ export default function Home() {
         </div>
       </div>
       <NewsSection />
-      <Footer />
     </main>
   );
 }

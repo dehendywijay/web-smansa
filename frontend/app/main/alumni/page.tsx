@@ -1,5 +1,6 @@
 import Sidebar from "@/components/SideNews";
 import Footer from "@/components/footer";
+import RevealOnScroll from "@/components/animations/RevealOnScroll";
 import PageBreadcrumb from "@/components/ui/PageBreadcrumb";
 import PageHero from "@/components/ui/PageHero";
 
@@ -10,35 +11,44 @@ export default function AlumniPage() {
       <PageBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Alumni" }]} />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-7xl mx-auto px-6 py-10">
-        <section className="md:col-span-3 text-gray-700">
-          <h2 className="text-red-700 font-bold text-2xl mb-3">Komunitas Alumni SMA N 1 Bangunrejo</h2>
-          <hr className="border-gray-300 mb-5" />
-          <p className="mb-4 leading-relaxed">Halaman alumni menjadi ruang untuk mempererat jejaring lintas angkatan, berbagi pengalaman, serta membuka peluang kolaborasi bagi siswa aktif dan lulusan.</p>
-          <p className="mb-6 leading-relaxed">Kami mendorong alumni untuk berkontribusi melalui program mentoring, seminar karier, beasiswa, dan dukungan pengembangan sekolah.</p>
+        {/* Blok konten alumni dianimasikan bertahap agar tidak kaku saat scroll. */}
+        <RevealOnScroll as="section" direction="up" rootMargin="0px 0px -10% 0px" className="md:col-span-3 text-gray-700">
+          <RevealOnScroll as="h2" direction="up" className="text-red-700 font-bold text-2xl mb-3">
+            Komunitas Alumni SMA N 1 Bangunrejo
+          </RevealOnScroll>
+          <RevealOnScroll direction="up" delayClassName="delay-100" className="mb-5">
+            <hr className="border-gray-300" />
+          </RevealOnScroll>
+          <RevealOnScroll as="p" direction="up" delayClassName="delay-150" className="mb-4 leading-relaxed">
+            Halaman alumni menjadi ruang untuk mempererat jejaring lintas angkatan, berbagi pengalaman, serta membuka peluang kolaborasi bagi siswa aktif dan lulusan.
+          </RevealOnScroll>
+          <RevealOnScroll as="p" direction="up" delayClassName="delay-200" className="mb-6 leading-relaxed">
+            Kami mendorong alumni untuk berkontribusi melalui program mentoring, seminar karier, beasiswa, dan dukungan pengembangan sekolah.
+          </RevealOnScroll>
 
           <div className="grid sm:grid-cols-2 gap-5">
-            <div className="border border-gray-200 rounded-lg p-5">
+            <RevealOnScroll direction="up" delayClassName="delay-200" className="border border-gray-200 rounded-lg p-5">
               <h3 className="font-bold text-lg mb-2">Program Mentoring</h3>
               <p className="text-sm text-gray-600">Alumni mendampingi siswa kelas akhir dalam persiapan kuliah dan dunia kerja.</p>
-            </div>
-            <div className="border border-gray-200 rounded-lg p-5">
+            </RevealOnScroll>
+            <RevealOnScroll direction="up" delayClassName="delay-300" className="border border-gray-200 rounded-lg p-5">
               <h3 className="font-bold text-lg mb-2">Tracer Study</h3>
               <p className="text-sm text-gray-600">Pendataan lulusan untuk evaluasi kurikulum dan peningkatan kualitas pembelajaran.</p>
-            </div>
-            <div className="border border-gray-200 rounded-lg p-5">
+            </RevealOnScroll>
+            <RevealOnScroll direction="up" delayClassName="delay-[380ms]" className="border border-gray-200 rounded-lg p-5">
               <h3 className="font-bold text-lg mb-2">Career Talk</h3>
               <p className="text-sm text-gray-600">Sesi berbagi pengalaman karier dari alumni di berbagai bidang profesi.</p>
-            </div>
-            <div className="border border-gray-200 rounded-lg p-5">
+            </RevealOnScroll>
+            <RevealOnScroll direction="up" delayClassName="delay-[460ms]" className="border border-gray-200 rounded-lg p-5">
               <h3 className="font-bold text-lg mb-2">Dukungan Beasiswa</h3>
               <p className="text-sm text-gray-600">Program kolaboratif alumni untuk mendukung siswa berprestasi.</p>
-            </div>
+            </RevealOnScroll>
           </div>
-        </section>
+        </RevealOnScroll>
 
-        <div>
+        <RevealOnScroll as="div" direction="up" delayClassName="delay-150" rootMargin="0px 0px -10% 0px">
           <Sidebar />
-        </div>
+        </RevealOnScroll>
       </div>
 
       <Footer />

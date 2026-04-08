@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import TextEditor from '@/components/text-editor'
+// import TextEditor from '@/components/text-editor'
 import axios from 'axios'
 
 export default function CreatePostForm() {
@@ -53,7 +53,7 @@ export default function CreatePostForm() {
         }}
       />
 
-      <TextEditor onChange={setContent} />
+      {/* <TextEditor onChange={setContent} /> */}
 
       <button
         type="submit"
