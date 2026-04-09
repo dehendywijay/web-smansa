@@ -27,7 +27,10 @@ export default function Footer() {
 
             <div className="flex items-center gap-3 mx-0.5">
               <MapPinned size={18} />
-              <span>Jl. Raya Sidorejo, Kec. Bangunrejo <br />Kab. Lampung Tengah</span>
+              <span>
+                Jl. Raya Sidorejo, Kec. Bangunrejo <br />
+                Kab. Lampung Tengah
+              </span>
             </div>
           </div>
 
@@ -82,7 +85,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-gray-800 text-center text-sm py-5"> <i>&copy; 2026 <strong>SMA N 1 BANGUNREJO</strong>. All rights reserved.</i></div>
+      <div className="border-t border-gray-800 text-center text-sm py-5">
+        {" "}
+        <i>
+          &copy; 2026 <strong>SMA N 1 BANGUNREJO</strong>. All rights reserved.
+        </i>
+      </div>
     </footer>
   );
 }

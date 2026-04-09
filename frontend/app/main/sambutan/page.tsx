@@ -1,8 +1,8 @@
-import Sidebar from "@/components/SideNews";
-import Footer from "@/components/footer";
+import Sidebar from "@/components/news/SideNews";
+import Footer from "@/components/layout/footer";
 import RevealOnScroll from "@/components/animations/RevealOnScroll";
-import PageBreadcrumb from "@/components/ui/PageBreadcrumb";
-import PageHero from "@/components/ui/PageHero";
+import PageBreadcrumb from "@/components/layout/PageBreadcrumb";
+import PageHero from "@/components/shared/PageHero";
 import Image from "next/image";
 
 export default function Home() {
@@ -15,11 +15,7 @@ export default function Home() {
         <section className="md:col-span-3">
           <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Foto kepala sekolah: masuk dari kiri agar fokus visual muncul lebih dulu. */}
-            <RevealOnScroll
-              direction="left"
-              rootMargin="0px 0px -12% 0px"
-              className="relative w-52 h-52 md:w-64 md:h-64 shrink-0 mx-auto md:mx-0"
-            >
+            <RevealOnScroll direction="left" rootMargin="0px 0px -12% 0px" className="relative w-52 h-52 md:w-64 md:h-64 shrink-0 mx-auto md:mx-0">
               <div className="absolute inset-0 rounded-full border-8 border-red-800"></div>
               <Image src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500&auto=format&fit=crop" alt="Kepala Sekolah" fill className="rounded-full object-cover relative z-10" />
             </RevealOnScroll>

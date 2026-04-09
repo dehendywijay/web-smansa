@@ -1,10 +1,10 @@
 "use client";
 
-import Footer from "@/components/footer";
-import Sidebar from "@/components/SideNews";
+import Footer from "@/components/layout/footer";
+import Sidebar from "@/components/news/SideNews";
 import RevealOnScroll from "@/components/animations/RevealOnScroll";
-import PageBreadcrumb from "@/components/ui/PageBreadcrumb";
-import PageHero from "@/components/ui/PageHero";
+import PageBreadcrumb from "@/components/layout/PageBreadcrumb";
+import PageHero from "@/components/shared/PageHero";
 import { api_images } from "@/constans/strings";
 import { useNews } from "@/hook/useNews";
 import { formatDate } from "@/lib/date";

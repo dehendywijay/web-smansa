@@ -1,10 +1,10 @@
 "use client";
 
-import Sidebar from "@/components/SideNews";
-import Footer from "@/components/footer";
+import Sidebar from "@/components/news/SideNews";
+import Footer from "@/components/layout/footer";
 import RevealOnScroll from "@/components/animations/RevealOnScroll";
-import PageBreadcrumb from "@/components/ui/PageBreadcrumb";
-import PageHero from "@/components/ui/PageHero";
+import PageBreadcrumb from "@/components/layout/PageBreadcrumb";
+import PageHero from "@/components/shared/PageHero";
 import { api_images } from "@/constans/strings";
 import { useNewsDetail } from "@/hook/useNewsDetail";
 import { formatDate } from "@/lib/date";
@@ -21,7 +21,7 @@ export default function Home({ params }: { params: Promise<{ slug: string }> }) 
       <PageBreadcrumb
         items={[
           { label: "Home", href: "/" },
-          { label: "Berita Terbaru", href: "/berita" },
+          { label: "Berita Terbaru", href: "/main/berita" },
           {
             label: news?.title ? (news.title.length > 30 ? `${news.title.substring(0, 30)}...` : news.title) : "Loading...",
           },
