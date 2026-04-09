@@ -1,8 +1,8 @@
-import Footer from "@/components/footer";
-import Sidebar from "@/components/SideNews";
+import Footer from "@/components/layout/footer";
+import Sidebar from "@/components/news/SideNews";
 import RevealOnScroll from "@/components/animations/RevealOnScroll";
-import PageBreadcrumb from "@/components/ui/PageBreadcrumb";
-import PageHero from "@/components/ui/PageHero";
+import PageBreadcrumb from "@/components/layout/PageBreadcrumb";
+import PageHero from "@/components/shared/PageHero";
 
 export default function ContactPage() {
   return (

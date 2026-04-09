@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import NewsForm from "./NewsForm";
 import { formatDate } from "@/lib/date";
 import { useNewsData } from "@/hook/useNewsData";
-import ReusablePagination from "../ui/ReusablePagination"; // Impor komponen paginasi baru
+import ReusablePagination from "../shared/ReusablePagination"; // Impor komponen paginasi baru
 
 export default function NewsDataTable() {
   const {

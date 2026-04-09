@@ -1,7 +1,7 @@
 // File: frontend/components/ui/ReusablePagination.tsx
 "use client";
 
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/shared/pagination";
 
 interface ReusablePaginationProps {
   totalPages: number;
