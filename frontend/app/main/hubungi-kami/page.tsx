@@ -65,8 +65,6 @@ export default function ContactPage() {
           <Sidebar />
         </RevealOnScroll>
       </div>
-
-      <Footer />
     </main>
   );
 }

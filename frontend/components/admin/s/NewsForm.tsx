@@ -42,7 +42,7 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
       setCategory("");
       setStatus("draft");
     }
-  }, [initialData, open]);
+  }, [initialData]);
 
   // Fungsi yang dipanggil saat tombol 'Save' diklik
   const handleSubmit = () => {
@@ -61,7 +61,7 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-200">
+      <DialogContent className="sm:max-w-[800px]">
         <DialogHeader>
           {/* Judul modal berubah tergantung mode (tambah/edit) */}
           <DialogTitle>{initialData ? "Edit" : "Tambah"} Berita</DialogTitle>
@@ -134,7 +134,7 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
           <Button type="submit" onClick={handleSubmit}>
             Simpan
           </Button>
-        </DialogFooter> 
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

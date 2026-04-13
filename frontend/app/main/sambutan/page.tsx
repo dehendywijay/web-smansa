@@ -52,7 +52,6 @@ export default function Home() {
           <Sidebar />
         </RevealOnScroll>
       </div>
-      <Footer />
     </main>
   );
 }

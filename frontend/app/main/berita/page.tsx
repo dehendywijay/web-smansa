@@ -64,7 +64,7 @@ export default function NewsList() {
                 <RevealOnScroll as="article" key={post.id} direction="up" className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ transitionDelay: `${Math.min(index * 90, 450)}ms` }}>
                   <div className="relative h-48 md:h-auto w-full group overflow-hidden">
                     {post.thumbnail ? (
-                      <Link href={`/berita/${post.id}`}>
+                      <Link href={`/main/berita/${post.id}`}>
                         <Image src={`${api_images}/${post.thumbnail}`} alt={post.title} fill className="object-cover group-hover:scale-105 transition duration-500" />
                       </Link>
                     ) : (
@@ -73,7 +73,7 @@ export default function NewsList() {
                   </div>
                   <div className="md:col-span-2 flex flex-col justify-center">
                     <h2 className="text-xl font-bold text-gray-900 hover:text-red-700 transition lg:text-2xl mb-3">
-                      <Link href={`/berita/${post.id}`}>{post.title}</Link>
+                      <Link href={`/main/berita/${post.id}`}>{post.title}</Link>
                     </h2>
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs md:text-sm text-gray-500 mb-4 font-semibold">
                       <div className="flex items-center gap-2">
@@ -99,8 +99,6 @@ export default function NewsList() {
           <Sidebar />
         </RevealOnScroll>
       </section>
-
-      <Footer />
     </main>
   );
 }

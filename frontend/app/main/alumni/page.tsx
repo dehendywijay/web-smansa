@@ -50,8 +50,6 @@ export default function AlumniPage() {
           <Sidebar />
         </RevealOnScroll>
       </div>
-
-      <Footer />
     </main>
   );
 }

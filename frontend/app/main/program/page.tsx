@@ -33,8 +33,6 @@ export default function ProgramPage() {
           <Sidebar />
         </RevealOnScroll>
       </div>
-
-      <Footer />
     </main>
   );
 }
