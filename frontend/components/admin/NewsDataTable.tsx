@@ -37,7 +37,7 @@ export default function NewsDataTable() {
     const res = await axios.delete(`${api_news}/${id}`);
     if (res.status === 200) {
       toast.success(res.data.success);
-      router.refresh();
+      router.refre("/admin");
     } else {
       toast.error(res.data.error);
     }
@@ -57,9 +57,9 @@ export default function NewsDataTable() {
     setCurrentPage,
   } = useNewsData();
 
-  const route = useRouter();
+  
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 ">
       <div className="flex flex-col md:flex-row justify-between gap-4">
         <Input placeholder="Cari berita..." className="max-w-sm" />
         <div className="flex items-center gap-2">
@@ -73,7 +73,7 @@ export default function NewsDataTable() {
               <SelectItem value="draft">Draf</SelectItem>
             </SelectContent>
           </Select>
-          <Button onClick={() => route.push(`/admin/news/add/`)}>
+          <Button onClick={() => router.push(`/admin/news/add/`)}>
             Tambah Berita
           </Button>
         </div>
@@ -92,9 +92,11 @@ export default function NewsDataTable() {
           </TableHeader>
           <TableBody>
             {paginatedNews.map((newsItem) => (
-              <TableRow key={newsItem.id}>
-                <TableCell>{newsItem.id}</TableCell>
-                <TableCell className="font-medium">{newsItem.title}</TableCell>
+              <TableRow key={newsItem.id}> 
+                <TableCell>{newsItem.id.split("-").slice(0, 1).join(" ")}-...</TableCell>
+                <TableCell className="font-medium">
+                  {newsItem.title.split(" ").slice(0, 5).join(" ")}...
+                </TableCell>
                 <TableCell>{newsItem.author}</TableCell>
                 <TableCell>{formatDate(newsItem.createdAt)}</TableCell>
                 <TableCell>
