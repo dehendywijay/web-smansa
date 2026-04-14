@@ -52,7 +52,7 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
       content,
       category,
       status,
-      author: "Admin", // Bisa didapatkan dari sesi pengguna
+      author: "Admin", 
       thumbnail: thumbnail?.name || initialData?.thumbnail || "",
       imgUrl: thumbnail?.name || initialData?.imgUrl || "",
     };

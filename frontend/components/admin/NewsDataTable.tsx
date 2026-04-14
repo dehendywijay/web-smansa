@@ -37,7 +37,7 @@ export default function NewsDataTable() {
     const res = await axios.delete(`${api_news}/${id}`);
     if (res.status === 200) {
       toast.success(res.data.success);
-      router.refre("/admin");
+      router.refresh();
     } else {
       toast.error(res.data.error);
     }
