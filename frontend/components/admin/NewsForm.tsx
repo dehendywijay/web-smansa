@@ -30,18 +30,18 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
 
   // useEffect untuk mengisi form dengan data awal saat mode edit
   useEffect(() => {
-    if (initialData) {
-      setTitle(initialData.title);
-      setContent(initialData.content);
-      setCategory(initialData.category);
-      setStatus(initialData.status);
-    } else {
-      // Reset form jika tidak ada data awal (mode tambah)
-      setTitle("");
-      setContent("");
-      setCategory("");
-      setStatus("draft");
-    }
+      if (initialData) {
+        setTitle(initialData.title);
+        setContent(initialData.content);
+        setCategory(initialData.category);
+        setStatus(initialData.status);
+      } else {
+        // Reset form jika tidak ada data awal (mode tambah)
+        setTitle("");
+        setContent("");
+        setCategory("");
+        setStatus("draft");
+      }
   }, [initialData, open]);
 
   // Fungsi yang dipanggil saat tombol 'Save' diklik
@@ -52,7 +52,6 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
       content,
       category,
       status,
-      author: "Admin", 
       thumbnail: thumbnail?.name || initialData?.thumbnail || "",
       imgUrl: thumbnail?.name || initialData?.imgUrl || "",
     };
@@ -134,7 +133,7 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
           <Button type="submit" onClick={handleSubmit}>
             Simpan
           </Button>
-        </DialogFooter> 
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

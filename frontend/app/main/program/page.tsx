@@ -9,12 +9,12 @@ export default function ProgramPage() {
   return (
     <main className="bg-white min-h-screen">
       <PageHero title="Program" imageUrl="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1920&auto=format&fit=crop" alt="Program" />
-      <PageBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Program" }]} />
+      <PageBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Ekskul" }]} />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-7xl mx-auto px-6 py-10">
         <RevealOnScroll as="section" direction="up" rootMargin="0px 0px -10% 0px" className="md:col-span-3 text-gray-700">
           <RevealOnScroll as="h2" direction="up" className="text-red-700 font-bold text-2xl mb-3">
-            Program Unggulan Sekolah
+            Ekstakulikuler Sekolah
           </RevealOnScroll>
           <RevealOnScroll direction="up" delayClassName="delay-100" className="mb-6">
             <hr className="border-gray-300" />

@@ -3,12 +3,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { News } from "@/types/type";
-import {
-  fetchNewsList,
-  createNews,
-  updateNews,
-  deleteNews,
-} from "@/lib/newsApi";
+import { fetchNewsList, createNews, updateNews, deleteNews } from "@/lib/newsApi";
 
 /**
  * @description Custom hook untuk mengelola data berita dengan paginasi.
@@ -42,12 +37,13 @@ export function useNewsData(itemsPerPage: number = 5) {
   };
 
   useEffect(() => {
-    getNews();
+    const loadNews = async () => {
+      await getNews();
+    };
+    loadNews();
   }, []);
 
-  const handleSave = async (
-    newsData: Omit<News, "id" | "createdAt" | "updatedAt">
-  ) => {
+  const handleSave = async (newsData: Omit<News, "id" | "createdAt" | "updatedAt">) => {
     if (editingNews) {
       await updateNews(editingNews.id, newsData);
     } else {

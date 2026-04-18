@@ -12,7 +12,6 @@ export type MenuSubItem = {
 export type News = {
   id: string;
   title: string;
-  author: string;
   thumbnail: string;
   imgUrl: string;
   content: string;
@@ -21,4 +20,3 @@ export type News = {
   createdAt: string | Date;
   updatedAt: string | Date;
 };
-
