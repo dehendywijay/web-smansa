@@ -1,6 +1,5 @@
 "use client";
 
-
 import { News } from "@/types/type";
 import Image from "next/image";
 import Link from "next/link";

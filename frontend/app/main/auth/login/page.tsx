@@ -14,7 +14,7 @@ export default function LoginPage() {
     e.preventDefault();
     // Here you would typically handle authentication
     // For now, we'll just redirect to the admin dashboard
-    router.push("/admin/add");
+    router.push("/admin/news/add");
   };
 
   return (

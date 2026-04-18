@@ -16,9 +16,9 @@ export const PUT = async (
   const slug = params.slug;
   const { title, content } = (await req.json()) ?? " ";
 
-  let res = null;
+  
   if (title === undefined) {
-    res = await prisma.berita.update({
+     await prisma.berita.update({
       where: { id: slug },
       data: {
         content,
@@ -28,7 +28,7 @@ export const PUT = async (
       status: 200,
     });
   } else {
-    res = await prisma.berita.update({
+    await prisma.berita.update({
       where: { id: slug },
       data: {
         title,
