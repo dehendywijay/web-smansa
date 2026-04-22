@@ -24,12 +24,12 @@ export default function NewsDataTable() {
     const res = await axios.delete(`${api_news}/${id}`);
     if (res.status === 200) {
       toast.success(res.data.success);
-      router.refresh();
+      router.push("/admin");
     } else {
       toast.error(res.data.error);
     }
-
     return res;
+    
   };
 
   const { paginatedNews, isFormOpen, editingNews, currentPage, totalPages, handleSave, handleEdit, setIsFormOpen, setCurrentPage } = useNewsData();
@@ -67,7 +67,7 @@ export default function NewsDataTable() {
             {paginatedNews.map((newsItem) => (
               <TableRow key={newsItem.id}>
                 <TableCell>{newsItem.id.split("-").slice(0, 1).join(" ")}-...</TableCell>
-                <TableCell className="font-medium">{newsItem.title.split(" ").slice(0, 5).join(" ")}...</TableCell>
+                <TableCell className="font-medium">{newsItem.title.split(" ").slice(0, 10).join(" ")}...</TableCell>
                 <TableCell>{formatDate(newsItem.createdAt)}</TableCell>
                 <TableCell>
                   <Badge variant={newsItem.status === "published" ? "default" : "secondary"}>{newsItem.status}</Badge>

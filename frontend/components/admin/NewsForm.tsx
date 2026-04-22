@@ -10,6 +10,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import TextEditor from "@/components/text-editor"; // Komponen editor teks kustom
 import { useState, useEffect } from "react";
 import { News } from "@/types/type"; // Tipe data untuk berita
+import { AlertDialogSure } from "./alert-sure";
+import { useRouter } from "next/navigation"
+
+
 
 // Definisikan properti yang diterima oleh komponen NewsForm
 interface NewsFormProps {
@@ -31,6 +35,7 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
   // useEffect untuk mengisi form dengan data awal saat mode edit
   useEffect(() => {
       if (initialData) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setTitle(initialData.title);
         setContent(initialData.content);
         setCategory(initialData.category);
@@ -44,6 +49,8 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
       }
   }, [initialData, open]);
 
+
+  const router = useRouter()
   // Fungsi yang dipanggil saat tombol 'Save' diklik
   const handleSubmit = () => {
     // Contoh sederhana, di aplikasi nyata, Anda harus menangani unggahan file dengan benar.
@@ -56,6 +63,7 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
       imgUrl: thumbnail?.name || initialData?.imgUrl || "",
     };
     onSave(newsData);
+    router.refresh()
   };
 
   return (
@@ -130,9 +138,10 @@ export default function NewsForm({ open, onOpenChange, onSave, initialData }: Ne
             </Button>
           </DialogClose>
           {/* Tombol untuk menyimpan data */}
-          <Button type="submit" onClick={handleSubmit}>
+          {/* <Button type="submit" onClick={handleSubmit}>
             Simpan
-          </Button>
+          </Button> */}
+          <AlertDialogSure onSave={handleSubmit} />
         </DialogFooter>
       </DialogContent>
     </Dialog>

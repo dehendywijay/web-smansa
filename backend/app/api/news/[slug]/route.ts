@@ -6,7 +6,6 @@ export const GET = async (
   ctx: { params: Promise<{ slug: string }> },
 ) => {
   const { slug } = await ctx.params;
-  const id = slug;
 
   const resp = await prisma.berita.findUnique({
     where: {
@@ -30,7 +29,7 @@ export const PUT = async (
   const { slug } = await ctx.params;
   const { title, content } = await req.json();
 
-  const res = await prisma.berita.update({
+  await prisma.berita.update({
     where: { id: slug },
     data: {
       title,
@@ -50,7 +49,7 @@ export const DELETE = async (
   const { slug } = await ctx.params;
 
   try {
-    const res = await prisma.berita.delete({
+    await prisma.berita.delete({
       where: { id: slug },
     });
 

@@ -16,7 +16,7 @@ import {
 import { Button } from "@/components/ui/button"
 
 type Props = {
-  onDelete: () => void
+    onDelete: () => void
 }
 
 export function AlertDialogDestructive({ onDelete }: Props) {
@@ -46,7 +46,9 @@ export function AlertDialogDestructive({ onDelete }: Props) {
 
           <AlertDialogAction
             variant="destructive"
-            onClick={onDelete}
+            onClick={async () => {
+              await onDelete()
+            }}
           >
             Delete
           </AlertDialogAction>
